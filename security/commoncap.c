@@ -91,6 +91,8 @@ int cap_capable(struct task_struct *tsk, const struct cred *cred,
 		return 0;
 	if (cap == CAP_NET_ADMIN && in_egroup_p(AID_NET_ADMIN))
 		return 0;
+	if (cap == CAP_NET_BIND_SERVICE && in_egroup_p(AID_NET_BIND_SERVICE))
+		return 0;
 
 	for (;;) {
 		/* The creator of the user namespace has all caps. */
